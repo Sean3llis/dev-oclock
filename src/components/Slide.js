@@ -1,17 +1,20 @@
 import React from 'react';
-window.React = React;
-import ReactDOM from 'react-dom';
 import { Slide } from 'spectacle';
 import Logo from './Logo';
 
 export default class PPSlide extends React.Component {
+  static defaultProps = {
+    bgColor: 'pannaCotta'
+  }
   render() {
-    const { children } = this.props;
-    debugger;
+    const children = React.Children.map(this.props.children, child => {
+      return React.cloneElement(child, {
+        textColor: this.props.bgColor === 'pannaCotta' ? 'lapel' : 'pannaCotta'
+      });
+    });
     return (
-      <Slide {...this.props} hasSlideChildren>
+      <Slide textColor="pannaCotta" bgColor={this.props.bgColor} {...this.props}>
           {children}
-          <Logo></Logo>
       </Slide>
     )
   }

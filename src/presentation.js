@@ -1,5 +1,6 @@
 // Import React
 import React from 'react';
+import styled from 'styled-components';
 
 // Import Spectacle Core tags
 import {
@@ -7,26 +8,49 @@ import {
   Cite,
   Heading,
   ListItem,
+  Appear,
+  CodePane,
+  Image,
   Deck,
+  Slide,
   List,
   Quote,
   Text,
 } from 'spectacle';
 
-import Slide from './components/Slide';
+// import Slide from './components/Slide';
+import colors from './colors';
+import Logo from './components/Logo';
 
 // Import theme
 import createTheme from 'spectacle/lib/themes/default';
+import tabImperativeSnippet from './snippets/tab-imperative.txt';
+import tabDeclarativeSnippet from './snippets/tab-declarative.txt';
+import tabDeclarativeDetails from './snippets/tab-declarative-details.txt';
 
 // Require CSS
 require('normalize.css');
 
+
+const {
+  pannaCotta,
+  pannaCottaDark,
+  lapel,
+  paloma,
+  gatsby,
+  dove
+} = colors;
+
 const theme = createTheme(
   {
-    light: '#fffbf5',
-    dark: '#333333',
-    orange: '#005ac8',
-    blue: '#ff8669',
+    primary: lapel,
+    secondary: pannaCotta,
+    pannaCotta,
+    pannaCottaDark,
+    lapel,
+    paloma,
+    gatsby,
+    dove
   },
   {
     primary: 'Montserrat',
@@ -37,61 +61,73 @@ const theme = createTheme(
 export default class Presentation extends React.Component {
   render() {
     return (
-      <Deck
-        transition={['scale', 'scale']}
-        transitionDuration={500}
-        progress={`bar`}
-        theme={theme}
-      >
-        <Slide bgColor="blue">
-          <Heading size={1} fit caps lineHeight={1} textColor="light">
-            Spectacle Boilerplate
+      <div>
+        <Deck
+          progress={`bar`}
+          controls={false}
+          transition={['slide', 'slide']}
+          theme={theme}
+        >
+        <Slide bgColor="paloma">
+          <Heading size={2} fit caps lineHeight={1}>
+            How To Train Your Components
           </Heading>
-          <Text margin="10px 0 0" textColor="light" size={1} fit bold>
-            open the presentation/index.js file to get started
-          </Text>
         </Slide>
-        <Slide bgColor="blue">
-          <Heading size={6} textColor="light" caps>
-            Typography
-          </Heading>
-          <Heading size={1} textColor="light">
-            Heading 1
-          </Heading>
-          <Heading size={2} textColor="light">
-            Heading 2
-          </Heading>
-          <Heading size={3} textColor="light">
-            Heading 3
-          </Heading>
-          <Heading size={4} textColor="light">
-            Heading 4
-          </Heading>
-          <Heading size={5} textColor="light">
-            Heading 5
-          </Heading>
-          <Text size={6} textColor="light">
-            Standard text
-          </Text>
-        </Slide>
-        <Slide bgColor="light" textColor="blue">
-          <Heading size={6} textColor="orange" caps>
-            Standard List
-          </Heading>
-          <List>
-            <ListItem>Item 1</ListItem>
-            <ListItem>Item 2</ListItem>
-            <ListItem>Item 3</ListItem>
-            <ListItem>Item 4</ListItem>
-          </List>
-        </Slide>
-        <Slide bgColor="secondary" textColor="light">
-          <BlockQuote>
-            <Quote>Example Quote</Quote>
-            <Cite>Author</Cite>
-          </BlockQuote>
-        </Slide>
-      </Deck>
+
+          <Slide bgColor="gatsby">
+          <Appear fid="1">
+            <Heading size={1} fit> Imperative vs. Declarative </Heading>
+          </Appear>
+          <Appear fid="2">
+            <Image margin="20px auto" fit src="https://media.giphy.com/media/ANbD1CCdA3iI8/giphy.gif" />
+          </Appear>
+          <Appear fid="3"><Text textSize="12px" textColor="pannaCotta">Early buzzwords detected...</Text></Appear>
+          </Slide>
+          <Slide>
+            <Heading textColor="pannaCotta" size={5}>Imperative:</Heading>
+            <Appear fid="1">
+              <CodePane lang="jsx" margin="20px auto" source={tabImperativeSnippet} />
+            </Appear>
+            <Appear fid="2">
+              <Text textColor="pannaCotta" textSize="14px">
+                What if Tabs starts to get complex and we split that into separate components?
+              </Text>
+            </Appear>
+          </Slide>
+          <Slide>
+            <Heading textColor="pannaCotta" size={5}>Props Drilling:</Heading>
+            <Appear fid="1">
+              <CodePane lang="jsx" margin="20px auto" source={`this.props this.props this.props this.props this.props this.props this.props this.props this.props`} />
+            </Appear>
+            <Appear fid="2">
+              <Text textAlign="left" textColor="pannaCotta" textSize="14px">
+                Every step down the JSX tree means another reference to variable names and a file abstraction away from where something is defined.
+              </Text>
+            </Appear>
+            <Appear fid="3">
+              <Image src="https://media.giphy.com/media/3ofSBhMqPkUMHXZNII/giphy.gif" />
+            </Appear>
+          </Slide>
+          <Slide align="center" bgColor="paloma">
+            <Heading textColor="pannaCotta" size={5}>Declarative:</Heading>
+            <Appear fid="1">
+              <CodePane lang="jsx" margin="20px auto" source={tabDeclarativeSnippet} />
+            </Appear>
+            <Appear>
+              <Text textColor="pannaCotta" textSize="14px">
+                Our component API now contains 3 separate exports.
+              </Text>
+            </Appear>
+          </Slide>
+          <Slide align="center" bgColor="gatsby">
+            <Heading textColor="pannaCotta" size={5}>Closer Look:</Heading>
+            <Appear fid="1">
+              <CodePane lang="jsx" margin="20px auto" source={tabDeclarativeDetails} />
+            </Appear>
+          </Slide>
+          <Logo></Logo>
+        </Deck>
+      </div>
     );
   }
 }

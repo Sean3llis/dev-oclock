@@ -1,0 +1,27 @@
+...
+import { Tabs } from './Tabs';
+
+class App extends React.Component {
+  render() {
+    const tabData = [
+      {
+        label: "Background",
+        description: <p>are beautiful</p>
+      },
+      {
+        label: "Text",
+        description: <p>is texty</p>
+      },
+      {
+        label: "Stickers",
+        description: <p>are greath for the lulz</p>
+      }
+    ];
+
+    return (
+      <div>
+        <Tabs data={tabData} />
+      </div>
+    );
+  }
+}
