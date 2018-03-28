@@ -130,9 +130,27 @@ export default class Presentation extends React.Component {
             </Appear>
             <Appear>
               <Text textColor="pannaCotta" textSize="18px">
-                Our component API now contains 3 separate exports.
+                What just happened?
               </Text>
             </Appear>
+          </Slide>
+
+          <Slide align="center" bgColor="gatsby">
+            <Appear fid="1">
+              <Heading fit caps textColor="pannaCotta" size={6}>Layout flexibility is huge</Heading>
+            </Appear>
+            <Appear fid="2">
+              <div>
+                <Heading fit caps textColor="pannaCotta" size={6}>Not mutually exclusive with the first pattern!</Heading>
+              </div>
+            </Appear>
+            <Appear fid="3">
+              <Heading fit textColor="pannaCotta" size={6}># of variable references decreased by a lot</Heading>
+            </Appear>
+            <Appear fid="4">
+              <Image margin="200px auto" src="https://media.giphy.com/media/3ofSBhMqPkUMHXZNII/giphy.gif" />
+            </Appear>
+            <Logo />
           </Slide>
 
           <Slide align="center" bgColor="gatsby">
@@ -142,6 +160,7 @@ export default class Presentation extends React.Component {
             </Appear>
             <Logo />
           </Slide>
+
         </Deck>
         <Logo />
       </div>
